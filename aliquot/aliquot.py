@@ -1,3 +1,6 @@
+from logging import lastResort
+
+
 def divisors(n: int) -> int:
     for i in range(1, n // 2 + 1):
         if n % i == 0:
@@ -20,3 +23,20 @@ def is_friendly(n: int) -> int:
         return m
     else:
         return 0
+
+def aliquot_sequence(a0: int, k: int) -> int:
+    a = a0
+    for i in range(k):
+        yield a
+        a = sum_divisors(a)
+
+def aliquot_sequence_until_repeat(a0: int) -> int:
+    last_an = 0
+    an = a0
+    yield an
+    while True:
+        an = sum_divisors(an)
+        yield an
+        if an == last_an:
+            break
+        last_an = an
