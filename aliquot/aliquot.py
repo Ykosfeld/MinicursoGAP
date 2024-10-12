@@ -13,4 +13,10 @@ def is_perfect(n: int) -> bool:
     else:
         return False
 
-print(is_perfect(28))
+def is_friendly(n: int) -> int:
+    m = sum_divisors(n)
+    sum_m = sum_divisors(m)
+    if sum_m == n:
+        return m
+    else:
+        return 0
